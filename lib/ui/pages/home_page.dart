@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_airplane/shared/theme.dart';
+import 'package:flutter_airplane/ui/widgets/destination_card.dart';
+import 'package:flutter_airplane/ui/widgets/destination_tile.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,61 +49,52 @@ class HomePage extends StatelessWidget {
     Widget popularDestinations() {
       return Container(
         margin: EdgeInsets.only(top: 30),
-        child: Row(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              DestinationCard(
+                  name: 'Lake Ciliwung',
+                  place: 'Tangerang',
+                  image: 'assets/image_destination1.png',
+                  rate: 4.8),
+              DestinationCard(
+                  name: 'White House',
+                  place: 'Spain',
+                  image: 'assets/image_destination2.png',
+                  rate: 4.7),
+              DestinationCard(
+                  name: 'Hill Heyo',
+                  place: 'Monaco',
+                  image: 'assets/image_destination3.png',
+                  rate: 4.8),
+              DestinationCard(
+                  name: 'Menarra',
+                  place: 'Japan',
+                  image: 'assets/image_destination4.png',
+                  rate: 5.0),
+              DestinationCard(
+                  name: 'Payung Teduh',
+                  place: 'Singapore',
+                  image: 'assets/image_destination5.png',
+                  rate: 4.8),
+            ],
+          ),
+        ),
+      );
+    }
+
+    Widget newDestinations() {
+      return Container(
+        margin: EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: 200,
-              height: 323,
-              padding: EdgeInsets.all(10),
-              margin: EdgeInsets.only(left: defaultMargin),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(defaultRadius),
-                  color: kWhiteColor),
-              child: Column(
-                children: [
-                  Container(
-                    width: 180,
-                    height: 220,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(18),
-                        image: DecorationImage(
-                            image:
-                                AssetImage('assets/image_destination1.png'))),
-                    child: Align(
-                      alignment: Alignment.topRight,
-                      child: Container(
-                        width: 54.5,
-                        height: 30,
-                        padding:
-                            EdgeInsets.only(bottom: 6, right: 2, left: 5.5),
-                        decoration: BoxDecoration(
-                            color: kWhiteColor,
-                            borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(18))),
-                        child: Row(
-                          children: [
-                            Container(
-                              width: 20,
-                              height: 20,
-                              margin: EdgeInsets.only(right: 1),
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image:
-                                          AssetImage('assets/icon_star.png'))),
-                            ),
-                            Text(
-                              '4.8',
-                              style:
-                                  blackTextStyle.copyWith(fontWeight: medium),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+            Text(
+              'New This Year',
+              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
             ),
+            DestinationTile(),
           ],
         ),
       );
@@ -111,6 +104,7 @@ class HomePage extends StatelessWidget {
       children: [
         header(),
         popularDestinations(),
+        newDestinations(),
       ],
     );
   }
