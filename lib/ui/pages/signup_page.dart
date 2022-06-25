@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_airplane/ui/widgets/custom_button.dart';
+import 'package:flutter_airplane/ui/widgets/custom_text_form_field.dart';
 import '../../shared/theme.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -17,59 +19,32 @@ class SignUpPage extends StatelessWidget {
     }
 
     Widget inputSection() {
-      Widget nameInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Full Name'),
-              SizedBox(height: 6,),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Full Name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: kPrimaryColor
-                    )
-                  )
-                ),
-              )
-            ],
-          ),
+      Widget nameInput() {
+        return CustomTextFormField(
+            title: 'Full Name', hintText: 'Your Full Name');
+      }
+
+      Widget emailInput() {
+        return CustomTextFormField(
+            title: 'Email Address', hintText: 'Your Email');
+      }
+
+      Widget passwordInput() {
+        return CustomTextFormField(
+          title: 'Password',
+          hintText: 'Your Password',
+          obsecure: true,
         );
       }
-      
-      Widget emailInput(){
-        return Container(
-          margin: EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Email Address'),
-              SizedBox(height: 6,),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  hintText: 'Your Email',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius)
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    borderSide: BorderSide(
-                      color: kPrimaryColor
-                    )
-                  )
-                ),
-              )
-            ],
-          ),
+
+      Widget hobbyInput() {
+        return CustomTextFormField(title: 'Hobby', hintText: 'Your Hobby');
+      }
+
+      Widget submitButton() {
+        return CustomButtom(
+          title: 'Get Started',
+          onPressed: () => Navigator.pushNamed(context, '/bonus'),
         );
       }
 
@@ -79,12 +54,29 @@ class SignUpPage extends StatelessWidget {
         decoration: BoxDecoration(
             color: kWhiteColor,
             borderRadius: BorderRadius.circular(defaultRadius)),
-            child: Column(
-              children: [
-                nameInput(),
-                emailInput(),
-              ],
-            ),
+        child: Column(
+          children: [
+            nameInput(),
+            emailInput(),
+            passwordInput(),
+            hobbyInput(),
+            submitButton(),
+          ],
+        ),
+      );
+    }
+
+    Widget tacButton() {
+      return Container(
+        alignment: Alignment.center,
+        margin: EdgeInsets.only(top: 50, bottom: 75),
+        child: Text(
+          'Terms and Conditions',
+          style: greyTextStyle.copyWith(
+              fontSize: 16,
+              fontWeight: light,
+              decoration: TextDecoration.underline),
+        ),
       );
     }
 
@@ -96,6 +88,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
+            tacButton(),
           ],
         ),
       ),
