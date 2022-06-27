@@ -86,15 +86,46 @@ class HomePage extends StatelessWidget {
 
     Widget newDestinations() {
       return Container(
-        margin: EdgeInsets.only(top: 30, left: defaultMargin, right: defaultMargin),
+        margin: EdgeInsets.only(
+            top: 30, left: defaultMargin, right: defaultMargin, bottom: 100),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               'New This Year',
-              style: blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
+              style:
+                  blackTextStyle.copyWith(fontSize: 18, fontWeight: semiBold),
             ),
-            DestinationTile(),
+            DestinationTile(
+              name: 'Danau Beratan',
+              city: 'Singaraja',
+              imageUrl: 'assets/image_destination6.png',
+              rating: 4.5,
+            ),
+            DestinationTile(
+              name: 'Sydney Opera',
+              city: 'Australia',
+              imageUrl: 'assets/image_destination7.png',
+              rating: 4.7,
+            ),
+            DestinationTile(
+              name: 'Roma',
+              city: 'Italy',
+              imageUrl: 'assets/image_destination8.png',
+              rating: 4.8,
+            ),
+            DestinationTile(
+              name: 'Payung Teduh',
+              city: 'Singapore',
+              imageUrl: 'assets/image_destination9.png',
+              rating: 4.5,
+            ),
+            DestinationTile(
+              name: 'Hill Hey',
+              city: 'Monaco',
+              imageUrl: 'assets/image_destination10.png',
+              rating: 4.7,
+            ),
           ],
         ),
       );
