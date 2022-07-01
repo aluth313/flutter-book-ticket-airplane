@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "324332089048",
+    "project_id": "airplane-dafa8",
+    "storage_bucket": "airplane-dafa8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:324332089048:android:647b7e7e6add6e587171ad",
+        "android_client_info": {
+          "package_name": "com.aluth.flutter_airplane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "324332089048-m44r0dae8t65kf4o1qtiv424jp4lva01.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGqrWzur6nhAvBvCq21REnmzO6E5lTHk0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "324332089048-m44r0dae8t65kf4o1qtiv424jp4lva01.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

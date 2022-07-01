@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_airplane/cubit/page_cubit.dart';
 import 'package:flutter_airplane/ui/pages/home_page.dart';
+import 'package:flutter_airplane/ui/pages/setting_page.dart';
+import 'package:flutter_airplane/ui/pages/transaction_page.dart';
+import 'package:flutter_airplane/ui/pages/wallet_page.dart';
 import 'package:flutter_airplane/ui/widgets/custom_bottom_navigation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../shared/theme.dart';
 
 class MainPage extends StatelessWidget {
@@ -21,16 +26,19 @@ class MainPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               CustomBottomNavigation(
+                index: 0,
                 urlImage: 'assets/icon_home.png',
-                isSelected: true,
               ),
               CustomBottomNavigation(
+                index: 1,
                 urlImage: 'assets/icon_booking.png',
               ),
               CustomBottomNavigation(
+                index: 2,
                 urlImage: 'assets/icon_card.png',
               ),
               CustomBottomNavigation(
+                index: 3,
                 urlImage: 'assets/icon_settings.png',
               ),
             ],
@@ -39,15 +47,29 @@ class MainPage extends StatelessWidget {
       );
     }
 
-    Widget buildContent(){
-      return HomePage();
+    Widget buildContent(int currentIndex) {
+      switch (currentIndex) {
+        case 0:
+          return HomePage();
+        case 1:
+          return TransactionPage();
+        case 2:
+          return WalletPage();
+        case 3:
+          return SettingPage();
+        default:
+          return HomePage();
+      }
     }
 
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: Stack(children: [
-        buildContent(), 
-        customBottomNavigation()]),
+    return BlocBuilder<PageCubit, int>(
+      builder: (context, currentIndex) {
+        return Scaffold(
+          backgroundColor: kBackgroundColor,
+          body: Stack(
+              children: [buildContent(currentIndex), customBottomNavigation()]),
+        );
+      },
     );
   }
 }
