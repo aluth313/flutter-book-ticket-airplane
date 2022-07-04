@@ -5,11 +5,13 @@ class CustomTextFormField extends StatelessWidget {
   final String title;
   final String hintText;
   final bool obsecure;
+  final TextEditingController controller;
 
   const CustomTextFormField(
       {Key? key,
       required this.title,
       required this.hintText,
+      required this.controller,
       this.obsecure = false})
       : super(key: key);
 
@@ -27,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
           TextFormField(
             obscureText: obsecure,
             cursorColor: kBlackColor,
+            controller: controller,
             decoration: InputDecoration(
                 hintText: hintText,
                 border: OutlineInputBorder(
