@@ -1,19 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_airplane/models/destination_model.dart';
 import 'package:flutter_airplane/shared/theme.dart';
 import 'package:flutter_airplane/ui/pages/detail_page.dart';
 
 class DestinationTile extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destination;
 
-  const DestinationTile(
-      {Key? key,
-      required this.name,
-      required this.city,
-      required this.imageUrl,
-      this.rating = 0.0})
+  const DestinationTile({Key? key, required this.destination})
       : super(key: key);
 
   @override
@@ -38,14 +31,15 @@ class DestinationTile extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(imageUrl))),
+                      fit: BoxFit.cover,
+                      image: NetworkImage(destination.imageUrl))),
             ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    name,
+                    destination.name,
                     overflow: TextOverflow.ellipsis,
                     style: blackTextStyle.copyWith(
                         fontSize: 18, fontWeight: medium),
@@ -54,7 +48,7 @@ class DestinationTile extends StatelessWidget {
                     height: 5,
                   ),
                   Text(
-                    city,
+                    destination.city,
                     overflow: TextOverflow.ellipsis,
                     style: greyTextStyle.copyWith(fontWeight: light),
                   )
@@ -70,7 +64,7 @@ class DestinationTile extends StatelessWidget {
                       image: AssetImage('assets/icon_star.png'))),
             ),
             Text(
-              rating.toString(),
+              destination.rating.toString(),
               style: blackTextStyle.copyWith(fontWeight: medium),
             ),
             SizedBox(
